@@ -80,12 +80,8 @@ Workspace = class("Workspace")
     end
 
     function Workspace:draw()
-        if self.camera ~= nil then
-            self.camera:draw(Workspace:GetObjectsWithComponent("BasicRenderer"))
-        else
-            for tag,obj in pairs(self.world) do
-                if obj.draw ~= nil then obj:draw(); end
-            end
+        for tag,obj in pairs(self.world) do
+            if obj.draw ~= nil then obj:draw(); end
         end
      end
 

@@ -20,9 +20,9 @@ end
 
 love.frame = 0
 function love.update(dt)
-    
+   
     scn_mngr:update(dt)
-    
+
     if UserInput.keyboard:keyPressed('q') then love.event.quit(); end
     if UserInput.keyboard:keyPressed('p') then showProfiler = not showProfiler; if showProfiler then love.profiler.start(); else love.profiler.stop(); end end
 
@@ -37,7 +37,6 @@ function love.draw()
 end
 
 UserInput.keyboard:hookLoveEvents()
-
 
 function debugData(x,y)
     Color:fromRGB(20,50,100,0.5)
