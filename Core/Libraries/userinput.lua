@@ -10,6 +10,21 @@ local UserInput = {}
 		end
 	end
 
+	function UserInput.hookLoveEvents()
+		function love.keypressed(key, scancode, isrepeat)
+			key_states[key] = true
+		end
+		function love.keyreleased(key, scancode)
+			key_states[key] = false
+		end
+		function love.mousepressed(x,y,button,isTouch,clicks)
+			key_states[button] = true
+		end
+		function love.mousereleased(x,y,button,isTouch,clicks)
+			key_states[button] = false
+		end
+	end
+	
     --// Keyboard
 
     UserInput.keyboard = {} 
@@ -26,15 +41,6 @@ local UserInput = {}
 	        return key_states[key]
 	    end
 
-	    function UserInput.keyboard:hookLoveEvents()
-	        function love.keypressed(key, scancode, isrepeat)
-	            key_states[key] = true
-	        end
-	        function love.keyreleased(key, scancode)
-	            key_states[key] = false
-	        end
-	    end
-
 	--// Mouse
 
 	UserInput.mouse = {}
@@ -43,6 +49,17 @@ local UserInput = {}
 			return Vector2:fromTable(love.mouse.getPosition())
 		end
 
+		function UserInput.mouse:mouseButtonPressed(button)
+			return key_states[button] == true
+		end
+
+		function UserInput.mouse:mouseButtonReleased(button)
+			return key_states[button] == false
+		end
+
+		function UserInput.mouse:button(...)
+			return love.mouse.isDown(...)
+		end
 
 	--// General
 
