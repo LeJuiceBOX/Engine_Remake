@@ -4,7 +4,7 @@ settings = {}
 settings.title = "Engine-Remake"
 settings.developer = "David Hunt"
 settings.windowSize = {1280,720} --{1024,576}
-settings.vsync = false
+settings.vsync = true
 settings.version = version
 settings.console = true
 

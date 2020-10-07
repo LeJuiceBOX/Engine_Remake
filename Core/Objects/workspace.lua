@@ -16,7 +16,6 @@ Workspace = class("Workspace")
     function Workspace:NewInstance(tag,object)
         if not tag then error("Workspace:NewInstance requires a tag.") return; end 
         if not object then error("Workspace:NewInstance requires an object.") return; end 
-    
 
         local duplicates = 1
         -- Get all duplicate tags
