@@ -5,5 +5,13 @@
     ],
     "Lua.diagnostics.globals": [
         "love"
+    ],
+    "cSpell.words": [
+        "middleclass",
+        "mngr",
+        "scenemanager",
+        "scn",
+        "scn mngr",
+        "userinput"
     ]
 }

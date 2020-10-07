@@ -21,7 +21,8 @@ end
 love.frame = 0
 function love.update(dt)
    
-    scn_mngr:update(dt)
+    -- scene managing
+    if scn_mngr.scene ~= nil or scn_mngr.scene.update ~= nil then scn_mngr.scene.update(dt); end
 
     if UserInput.keyboard:keyPressed('q') then love.event.quit(); end
     if UserInput.keyboard:keyPressed('p') then showProfiler = not showProfiler; if showProfiler then love.profiler.start(); else love.profiler.stop(); end end
@@ -32,11 +33,11 @@ function love.update(dt)
 end
 
 function love.draw()
-    scn_mngr:draw()
+    if scn_mngr.scene ~= nil or scn_mngr.scene.update ~= nil then scn_mngr.scene.draw() end
     if showProfiler then debugProfiler(16,100); debugData(16,16) end
 end
 
-UserInput.keyboard:hookLoveEvents()
+UserInput.hookLoveEvents()
 
 function debugData(x,y)
     Color:fromRGB(20,50,100,0.5)
