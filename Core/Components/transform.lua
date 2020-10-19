@@ -8,4 +8,10 @@ Transform = class("Transform")
         self.position = pos or Vector2(0,0) 
         self.size =     size or Vector2(32,32)
         self.rotation = rot or 0
-    end 
+    end
+
+    function Transform:center()
+        local pos = self.position
+        local siz = self.size
+        return Vector2(pos.x+siz.x/2,pos.y+siz.y/2);
+    end
