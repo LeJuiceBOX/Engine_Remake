@@ -19,8 +19,8 @@ local scene = {}
         workspace:NewInstance("wall",Wall:new(Vector2(200,100),Vector2(1024,32)))
 
         Camera = StalkerCamera()
-        Camera:setFollowLerp(0.2)
         Camera:setFollowStyle("TOPDOWN_TIGHT")
+        Camera:setFollowLerp(0.5)
 
         player.renderer.color = Color:tableRGB(100,150,255)
     end
