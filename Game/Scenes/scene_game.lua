@@ -3,8 +3,9 @@ local StalkerCamera = require("Core.Libraries.stalker-x")
 local Vector2 = require("Core.Classes.vector2")
 require("Core.Classes.color")
 require("Core.Objects.workspace")
-require("Core.Objects.debugPlayer")
 require("Core.Objects.wall")
+
+require("Game.Objects.platformerPlayer")
 
 local class = require(MIDDLECLASS)
 
@@ -14,12 +15,12 @@ local scene = {}
         --// Services
         workspace = Workspace:new(camera)
         --// Objects
-        player = workspace:NewInstance("player",DebugPlayer:new(Vector2(love.graphics.getPixelWidth()/2,love.graphics.getPixelHeight()/2)))
-        workspace:NewInstance("wall",Wall:new(Vector2(100,100),Vector2(32,256)))
-        workspace:NewInstance("wall",Wall:new(Vector2(200,100),Vector2(1024,32)))
+        player = workspace:NewInstance("player",PlatformerPlayer:new())
+        workspace:NewInstance("wall",Wall:new(Vector2(0,600),Vector2(1280,32)))
+        workspace:NewInstance("wall",Wall:new(Vector2(0,400),Vector2(256,32)))
 
         Camera = StalkerCamera()
-        Camera:setFollowStyle("TOPDOWN_TIGHT")
+        Camera:setFollowStyle("PLATFORMER")
         Camera:setFollowLerp(0.5)
 
         player.renderer.color = Color:tableRGB(100,150,255)

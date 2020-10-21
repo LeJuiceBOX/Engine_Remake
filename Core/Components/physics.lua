@@ -1,0 +1,24 @@
+Vector2 = require("Core.Classes.vector2")
+ExMath = require("Core.Libraries.math")
+
+local class = require(MIDDLECLASS)
+Physics = class("Physics")
+
+    function Physics:initalize(parent,transform)
+        self.parent = parent
+        self.transform = transform
+        self.maxVelocity = Vector2(9999,9999)
+        self.velocity = Vector2(50,100) -- x: horizontal vel
+        self.gravity = 0
+        self.surfaceDrag = 10
+        self.airDrag = 4
+        self.direction = 1
+    end
+
+    function Physics:update(dt)
+        --self.transform.position.x = self.transform.position.x + (self.velocity*self.direction) *dt
+        if self.velocity.x > 0 then self.velocity.x = ExMath.clamp(self.velocity.x - self.surfaceDrag,0,self.maxVelocity.x); end
+    end
+
+    --===========================================================================================================================
+
