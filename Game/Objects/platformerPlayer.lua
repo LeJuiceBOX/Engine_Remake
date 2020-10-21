@@ -15,20 +15,18 @@ PlatformerPlayer = class("PlatformerPlayer")
         self.collider =     Collider(self,self.transform)
         self.physics =      Physics(self,self.transform)
 
-        self.acceleration = 10
-        self.jumpPower = 100
+        self.acceleration = 1000
+        self.jumpPower = 50
     end
 
     function PlatformerPlayer:update(dt)
         -- handle direction
         if UserInput.keyboard:key('a') then 
-            self.direction = -1; 
-            self.physics.velocity.x = self.physics.velocity.x + self.acceleration; 
+            self.physics.direction = -1; 
+            self.physics.velocity.x = self.physics.velocity.x + self.acceleration *dt; 
         elseif UserInput.keyboard:key('d') then 
-            self.direction = 1;
-            self.physics.velocity.x = self.physics.velocity.x + self.acceleration; 
-        else 
-            self.direction = 0; 
+            self.physics.direction = 1;
+            self.physics.velocity.x = self.physics.velocity.x + self.acceleration *dt; 
         end
 
         if UserInput.keyboard:key('w') then 

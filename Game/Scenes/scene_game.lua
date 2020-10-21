@@ -32,7 +32,7 @@ local scene = {}
         Camera:update(dt)
         Camera:follow(pPos.x,pPos.y)
         if UserInput.keyboard:key("f") then Camera:shake(8, 1, 60, 'XY') end
-        workspace().player:HandleCollisions(workspace:GetObjectsWithComponent("Transform",player))
+        --workspace().player:HandleCollisions(workspace:GetObjectsWithComponent("Transform",player))
     end
     
     function scene.draw()
