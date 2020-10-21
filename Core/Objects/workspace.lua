@@ -13,16 +13,22 @@ Workspace = class("Workspace")
         return self.world;
     end
 
+    
     function Workspace:NewInstance(tag,object)
         if not tag then error("Workspace:NewInstance requires a tag.") return; end 
         if not object then error("Workspace:NewInstance requires an object.") return; end 
+<<<<<<< HEAD
 
+=======
+        
+        
+>>>>>>> 1caacf5f00029b63ca2bf95b61e4f9853ed863a1
         local duplicates = 1
         -- Get all duplicate tags
         for w_tag,w_object in pairs(self.world) do if w_tag == tag then duplicates = duplicates + 1; end end
         -- If found, add a number to make it unique
         if duplicates > 1 then tag = tag..tostring(duplicates) end
-
+        
         self.world[tag] = object
         self:dPrint("Created a new "..tostring(object)..".")
         return self.world[tag];
@@ -61,7 +67,7 @@ Workspace = class("Workspace")
     function Workspace:GetObjectsOfClass(class)
         local objs = {}
         for tag,object in pairs(self.world) do
-            if tostrinh(object) == "Class "..class then objs[tag] = object; end
+            if tostring(object) == "Class "..class then objs[tag] = object; end
         end
         return objs;
     end
